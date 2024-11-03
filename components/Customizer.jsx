@@ -1,6 +1,10 @@
 import React from 'react';
 
-const Customizer = ({ selectedComponent, onStyleChange, onValueChange }) => {
+const Customizer = ({
+  selectedComponent,
+  handleStyleUpdate,
+  handleValueUpdate,
+}) => {
   if (!selectedComponent) {
     return (
       <div className="w-64 bg-white p-4 border-l">
@@ -9,14 +13,6 @@ const Customizer = ({ selectedComponent, onStyleChange, onValueChange }) => {
       </div>
     );
   }
-
-  const handleStyleChange = (property, value) => {
-    onStyleChange(property, value);
-  };
-
-  const handleValueChange = value => {
-    onValueChange(value);
-  };
 
   return (
     <div className="w-64 bg-white p-4 border-l">
@@ -28,7 +24,7 @@ const Customizer = ({ selectedComponent, onStyleChange, onValueChange }) => {
             <input
               type="text"
               value={selectedComponent.value}
-              onChange={e => handleValueChange(e.target.value)}
+              onChange={e => handleValueUpdate(e.target.value)}
               className="w-full px-3 py-2 border rounded"
             />
           </div>
@@ -40,7 +36,7 @@ const Customizer = ({ selectedComponent, onStyleChange, onValueChange }) => {
           <input
             type="text"
             value={selectedComponent.style?.fontSize}
-            onChange={e => handleStyleChange('fontSize', e.target.value)}
+            onChange={e => handleStyleUpdate('fontSize', e.target.value)}
             className="w-full px-3 py-2 border rounded"
           />
         </div>
@@ -51,7 +47,7 @@ const Customizer = ({ selectedComponent, onStyleChange, onValueChange }) => {
               <input
                 type="color"
                 value={selectedComponent.style?.color}
-                onChange={e => handleStyleChange('color', e.target.value)}
+                onChange={e => handleStyleUpdate('color', e.target.value)}
                 className="w-full"
               />
             </div>
@@ -63,7 +59,7 @@ const Customizer = ({ selectedComponent, onStyleChange, onValueChange }) => {
                 type="color"
                 value={selectedComponent.style?.backgroundColor || '#ffffff'}
                 onChange={e =>
-                  handleStyleChange('backgroundColor', e.target.value)
+                  handleStyleUpdate('backgroundColor', e.target.value)
                 }
                 className="w-full"
               />
@@ -76,7 +72,7 @@ const Customizer = ({ selectedComponent, onStyleChange, onValueChange }) => {
             <input
               type="text"
               value={selectedComponent.href}
-              onChange={e => handleStyleChange('href', e.target.value)}
+              onChange={e => handleStyleUpdate('href', e.target.value)}
               className="w-full px-3 py-2 border rounded"
             />
           </div>
