@@ -58,7 +58,7 @@ const EmailTemplateBuilder = () => {
     setSelectedComponent(component);
   };
 
-  const updateComponentStyle = (property, value) => {
+  const handleStyleUpdate = (property, value) => {
     if (!selectedComponent) return;
 
     const updatedComponents = components.map(component => {
@@ -89,7 +89,7 @@ const EmailTemplateBuilder = () => {
     );
   };
 
-  const updateComponentValue = value => {
+  const handleValueUpdate = value => {
     if (!selectedComponent) return;
 
     const updatedComponents = components.map(component => {
@@ -224,8 +224,8 @@ const EmailTemplateBuilder = () => {
       />
       <Customizer
         selectedComponent={selectedComponent}
-        handleStyleUpdate={updateComponentStyle}
-        handleValueUpdate={updateComponentValue}
+        handleStyleUpdate={handleStyleUpdate}
+        handleValueUpdate={handleValueUpdate}
       />
     </div>
   );
